@@ -11,6 +11,10 @@ top.mainloop()
 
 
 
+<<<<<<< HEAD
 
 
 #blablabla
+=======
+#Maarten
+>>>>>>> origin/master
