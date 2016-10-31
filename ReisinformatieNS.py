@@ -7,14 +7,3 @@ top = tkinter.Tk()
 top.configure(background='#fcc917')
 top.geometry('{}x{}'.format(900,600))
 top.mainloop()
-
-
-
-
-<<<<<<< HEAD
-
-
-#blablabla
-=======
-#Maarten
->>>>>>> origin/master
