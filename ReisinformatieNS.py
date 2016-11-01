@@ -3,8 +3,10 @@
 #Version 0.1
 
 #Import
-from pil 
-from tkinter import *
+from PIL import ImageTk
+import PIL.Image
+import tkinter
+from  tkinter import *
 from tkinter.messagebox import showinfo
 
 
@@ -27,8 +29,8 @@ def NotInUse():
 
 #layoutimg
 path = "balk.jpg"
-img = ImageTk.PhotoImage(Image.open(path))
-panel = tk.Label(window, image = img)
+img = ImageTk.PhotoImage(PIL.Image.open(path))
+panel = tkinter.Label(app, image = img)
 panel.pack(side = "bottom", fill = "both", expand = "yes")
 
 
