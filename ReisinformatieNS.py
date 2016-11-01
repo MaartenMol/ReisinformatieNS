@@ -11,7 +11,7 @@ from tkinter.messagebox import showinfo
 #Main App Settings
 app = Tk()
 app.iconbitmap('sources/ns.ico')
-app.configure(background='#fece22')
+app.configure(background='#ffcf1a')
 app.title("NS Kaartenautomaat")
 app.geometry('{}x{}'.format(790,600))
 app.resizable(width=False, height=False)
@@ -21,7 +21,7 @@ def reisInfoMenu():
     app.withdraw()
     infoMenu = Tk()
     infoMenu.iconbitmap('sources/ns.ico')
-    infoMenu.configure(background='#fece22')
+    infoMenu.configure(background='#ffcf1a')
     infoMenu.title("Reisinformatie | NS Kaartenautomaat")
     infoMenu.geometry('{}x{}'.format(790,600))
     infoMenu.resizable(width=False, height=False)
@@ -31,9 +31,9 @@ def reisInfoMenu():
     label.pack()
 
     #infoMenu Buttons and Input
-    button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Reisinformatie ophalen', command=NotInUse)
+    button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie ophalen', command=NotInUse)
     button3.place(x=420, y=425)
-    entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', width=20,)
+    entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', width=20,)
     entry1.place(x=120, y=430)
 
     #Footer Image
@@ -64,11 +64,11 @@ footerImagePanel = Label(app, image = footerImage, borderwidth= 0)
 footerImagePanel.place(x=0, y=555)
 
 #App Buttons
-button0 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Ik wil reizen naar', command=NotInUse)
+button0 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Ik wil reizen naar', command=NotInUse)
 button0.place(x=50, y=425)
-button1 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Ik heb een OV-Chipkaart', command=NotInUse)
+button1 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Ik heb een OV-Chipkaart', command=NotInUse)
 button1.place(x=275, y=425)
-button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Reisinformatie', command=reisInfoMenu)
+button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie', command=reisInfoMenu)
 button2.place(x=575, y=425)
 
 #Show main App
