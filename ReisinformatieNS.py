@@ -8,6 +8,8 @@ import PIL.Image
 from tkinter import *
 from tkinter.messagebox import showinfo
 
+
+
 #Main App Settings
 app = Tk()
 app.iconbitmap('sources/ns.ico')
@@ -17,12 +19,28 @@ app.geometry('{}x{}'.format(790,600))
 app.resizable(width=False, height=False)
 
 #Reis Info Menu Settings
-info = Tk()
-info.iconbitmap('sources/ns.ico')
-info.configure(background='#fece22')
-info.title("Reisinformatie NS V0.1")
-info.geometry('{}x{}'.format(790,600))
-info.resizable(width=False, height=False)
+#info = Tk()
+#info.iconbitmap('sources/ns.ico')
+#info.configure(background='#fece22')
+#info.title("Reisinformatie NS V0.1")
+#info.geometry('{}x{}'.format(790,600))
+#info.resizable(width=False, height=False)
+
+def quit():
+    app.destroy()
+
+#window2
+def win2():
+        app.withdraw()
+        new = Toplevel()
+        new.title('Window 2')
+        mainframe = Frame(new, padding = '3 3 12 12')
+        mainframe.grid(column = 0, row = 0, sticky = (N, W, E, S))
+        mainframe.columnconfigure(0, weight = 1)
+        mainframe.rowconfigure(0, weight = 1)
+
+        Button(mainframe, text = 'Next', command = win2).grid(
+            column = 1, row = 1, sticky = W)
 
 #Functions
 def NotInUse():
@@ -53,8 +71,12 @@ button0 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', 
 button0.place(x=50, y=425)
 button1 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Ik heb een OV-Chipkaart', command=NotInUse)
 button1.place(x=275, y=425)
-button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Reisinformatie', command=ReisInfoMenu)
+button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Reisinformatie', command=win2)
 button2.place(x=575, y=425)
+
+
+
+
 
 #Show main App
 app.mainloop()
