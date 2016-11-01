@@ -10,7 +10,7 @@ label = Label(master=top, text='Reisinformatie NS V0.1', background='yellow')
 label.pack()
 
 #App Buttons
-button = Button(master=top, background='blue', text='Druk hier')
+button = Button(master=top, font=('Frutiger', 16, 'bold'), foreground='white', background='blue', text='Reisinformatie')
 button.pack(pady=10)
 
 
