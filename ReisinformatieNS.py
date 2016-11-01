@@ -6,6 +6,8 @@
 from tkinter import *
 from tkinter.messagebox import showinfo
 
+
+
 #Main App
 top = Tk()
 
@@ -17,6 +19,13 @@ def NotInUse():
 #App Label
 label = Label(master=top, text='Reisinformatie NS V0.1', background='yellow')
 label.pack()
+
+#layoutimg
+path = "balk.jpg"
+img = ImageTk.PhotoImage(Image.open(path))
+panel = tk.Label(window, image = img)
+panel.pack(side = "bottom", fill = "both", expand = "yes")
+
 
 #App Buttons
 button0 = Button(master=top, font=('Frutiger', 16, 'bold'), foreground='white', background='blue', text='Ik wil reizen naar', command=NotInUse)
