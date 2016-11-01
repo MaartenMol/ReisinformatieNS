@@ -16,10 +16,21 @@ app.title("Reisinformatie NS V0.1")
 app.geometry('{}x{}'.format(790,600))
 app.resizable(width=False, height=False)
 
+#Reis Info Menu Settings
+info = Tk()
+info.iconbitmap('sources/ns.ico')
+info.configure(background='#fece22')
+info.title("Reisinformatie NS V0.1")
+info.geometry('{}x{}'.format(790,600))
+info.resizable(width=False, height=False)
+
 #Functions
 def NotInUse():
 	bericht = 'Deze functie is niet beschikbaar in onze App!'
 	showinfo(title='Melding Reisinformatie NS', message=bericht)
+
+def ReisInfoMenu():
+	app.mainloop()
 
 #App Label
 label = Label(master=app, text='Reisinformatie NS BETA By Joshua & Maarten', background='yellow')
@@ -42,7 +53,7 @@ button0 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', 
 button0.place(x=50, y=425)
 button1 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Ik heb een OV-Chipkaart', command=NotInUse)
 button1.place(x=275, y=425)
-button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Reisinformatie')
+button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#003399', text='Reisinformatie', command=ReisInfoMenu)
 button2.place(x=575, y=425)
 
 #Show main App
