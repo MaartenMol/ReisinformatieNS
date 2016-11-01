@@ -5,18 +5,15 @@
 #Import
 from PIL import ImageTk
 import PIL.Image
-import tkinter
 from  tkinter import *
 from tkinter.messagebox import showinfo
-
-
 
 #Main App Settings
 app = Tk()
 app.configure(background='#fcc917')
 app.title("Reisinformatie NS V0.1")
-app.geometry('{}x{}'.format(900,600))
-
+app.geometry('{}x{}'.format(790,600))
+app.resizable(width=False, height=False)
 
 #Functions
 def NotInUse():
@@ -27,12 +24,11 @@ def NotInUse():
 #label = Label(master=app, text='Reisinformatie NS V0.1', background='yellow')
 #label.pack()
 
-#layoutimg
+#Footer Image
 path = "balk.jpg"
 img = ImageTk.PhotoImage(PIL.Image.open(path))
-panel = tkinter.Label(app, image = img)
-panel.pack(side = "bottom", fill = "both", expand = "yes")
-
+panel = Label(app, image = img)
+panel.place(x=0, y=549)
 
 #App Buttons
 button0 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='blue', text='Ik wil reizen naar', command=NotInUse)
