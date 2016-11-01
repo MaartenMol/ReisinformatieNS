@@ -10,6 +10,7 @@ from tkinter.messagebox import showinfo
 
 #Main App Settings
 app = Tk()
+app.iconbitmap('sources/ns.ico')
 app.configure(background='#fece22')
 app.title("Reisinformatie NS V0.1")
 app.geometry('{}x{}'.format(790,600))
