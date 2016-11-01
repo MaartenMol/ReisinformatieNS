@@ -27,7 +27,7 @@ def reisInfoMenu():
     infoMenu.resizable(width=False, height=False)
 
     #infoMenu Label
-    label = Label(master=infoMenu, text='Reisinformatie NS BETA By Joshua & Maarten', background='yellow')
+    label = Label(master=infoMenu, text='Reisinformatie NS BETA By Joshua & Maarten', background='red')
     label.pack()
 
     #infoMenu Buttons and Input
@@ -48,7 +48,7 @@ def NotInUse():
     showinfo(title='Melding Reisinformatie NS', message=bericht)
 
 #App Label
-label = Label(master=app, text='Reisinformatie NS BETA By Joshua & Maarten', background='yellow')
+label = Label(master=app, text='Reisinformatie NS BETA By Joshua & Maarten', background='red')
 label.pack()
 
 #Main Image
