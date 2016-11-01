@@ -1,0 +1,7 @@
+import requests
+auth_details = ('joshuajessy47@gmail.com', 'vlgUm9-dkCiFX8swDoQ4uNdO1kiNtZhBs1CAIkbJl6gX3946BJ8uEQ')
+api_url = 'http://webservices.ns.nl/ns-api-avt?station=ut'
+response = requests.get(api_url, auth=auth_details)
+
+with open('vertrektijden.xml', 'w') as myXMLFile:
+ myXMLFile.write(response.text)
