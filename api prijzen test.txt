@@ -1,8 +1,0 @@
-import requests
-import xmltodict
-auth_details = ('joshuajessy47@gmail.com', 'vlgUm9-dkCiFX8swDoQ4uNdO1kiNtZhBs1CAIkbJl6gX3946BJ8uEQ')
-api_url = 'http://webservices.ns.nl/ns-api-prijzen-v3?from=rtd&to=gdm'
-response = requests.get(api_url, auth=auth_details)
-
-with open('kosten.xml', 'w') as myXMLFile:
- myXMLFile.write(response.text)
