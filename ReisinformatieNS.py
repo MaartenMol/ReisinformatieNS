@@ -11,12 +11,16 @@ from tkinter.messagebox import showinfo
 
 
 #Main App Settings
+def main(window):
+    window.iconbitmap('sources/ns.ico')
+    window.configure(background='#fece22')
+    window.title("Reisinformatie NS V0.1")
+    window.geometry('{}x{}'.format(790,600))
+    window.resizable(width=False, height=False)
+
+# app start
 app = Tk()
-app.iconbitmap('sources/ns.ico')
-app.configure(background='#fece22')
-app.title("Reisinformatie NS V0.1")
-app.geometry('{}x{}'.format(790,600))
-app.resizable(width=False, height=False)
+main(app)
 
 #Reis Info Menu Settings
 #info = Tk()
@@ -33,14 +37,7 @@ def quit():
 def win2():
         app.withdraw()
         new = Toplevel()
-        new.title('Window 2')
-        mainframe = Frame(new, padding = '3 3 12 12')
-        mainframe.grid(column = 0, row = 0, sticky = (N, W, E, S))
-        mainframe.columnconfigure(0, weight = 1)
-        mainframe.rowconfigure(0, weight = 1)
-
-        Button(mainframe, text = 'Next', command = win2).grid(
-            column = 1, row = 1, sticky = W)
+        main(new)
 
 #Functions
 def NotInUse():
