@@ -39,7 +39,12 @@ def reisInfo(Station):
         eindbestemming = vertrek['EindBestemming']
         vertrektijd = vertrek['VertrekTijd'] # 2016-09-27T18:36:00+0200
         vertrektijd = vertrektijd[11:16] # 18:36
-        gegevens += str('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming + '\n')
+        trein = vertrek['TreinSoort']
+        spoor = str(vertrek['VertrekSpoor'])
+        spoor1 = spoor.replace("OrderedDict([('@wijziging', 'false'), ('#text', '", "")
+        spoor2 = spoor1.replace("')])", "")
+        spoor3 = spoor2.replace("OrderedDict([('@wijziging', 'true'), ('#text', '", "")
+        gegevens += str('Om '+vertrektijd+' vertrekt er een ' + trein + ' naar '+ eindbestemming + ' van spoor ' + spoor3 + '\n')
     return gegevens
 
 #Reis Info Menu
