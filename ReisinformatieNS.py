@@ -57,15 +57,21 @@ def reisInfoMenu():
         app.deiconify()
         infoMenu.destroy()
 
-    #infoMenu Label
-    label = Label(master=infoMenu, text='Reisinformatie NS BETA By Joshua & Maarten', background='red')
+    #Top border
+    label = Label(master=infoMenu, text='', background='#ffcf1a')
     label.pack()
+
+    #Bottom border
+    label = Label(master=infoMenu, height=10, text='', background='#ffcf1a')
+    label.pack(side=BOTTOM)
 
     #infoMenu Buttons and Input
     button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie ophalen', command=NotInUse)
-    button3.place(x=420, y=425)
+    button3.place(x=495, y=465)
     entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', width=20,)
-    entry1.place(x=120, y=430)
+    entry1.place(x=200, y=472)
+    label = Label(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', text='Vanaf station:', background='#01236a')
+    label.place(x=25, y=470)
 
     #Footer Image
     footerInfoMenuImagePath = "sources/footerInfoMenu.jpg"
@@ -79,14 +85,14 @@ def reisInfoMenu():
 
     #Scrollbar
     scrollbar = Scrollbar(infoMenu)
-    scrollbar.place(x=160, y=30)
+    scrollbar.pack(side="right", fill=Y, expand=False)
 
     #Reisgegevens Output GUI
     gegevens = reisInfo(Station)
-    text = Text(infoMenu)
+    text = Text(infoMenu, font=('Frutiger', 12, 'bold'), foreground='white', background='#01236a')
     text.insert(INSERT, gegevens)
     text.pack()
-    scrollbar.config (command = 'yscrollcommand')
+    scrollbar.config (command = text.yview)
 
 #Not in use warning
 def NotInUse():
