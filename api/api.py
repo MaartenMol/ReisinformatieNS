@@ -25,4 +25,4 @@ for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
     spoor3 = spoor2.replace("OrderedDict([('@wijziging', 'true'), ('#text', '", "")
 
 
-    print('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming + ' op spoor ' + spoor3)
+    print('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming + ' van spoor ' + spoor3)
