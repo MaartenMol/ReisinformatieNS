@@ -3,28 +3,57 @@
 #Version 0.1
 
 #Import
+import requests
+import xmltodict
 from PIL import ImageTk
 import PIL.Image
 from tkinter import *
 from tkinter.messagebox import showinfo
 
 #Main App Settings
+def windowconfig(window):
+    window.iconbitmap('sources/ns.ico')
+    window.configure(background='#ffcf1a')
+    window.geometry('{}x{}'.format(790,600))
+    window.resizable(width=False, height=False)
+
+#Main App Settings
 app = Tk()
-app.iconbitmap('sources/ns.ico')
-app.configure(background='#ffcf1a')
 app.title("NS Kaartenautomaat")
-app.geometry('{}x{}'.format(790,600))
-app.resizable(width=False, height=False)
+windowconfig(app)
+
+#Reis Info
+def reisInfo(Station):
+
+    #API Authentication
+    auth_details = ('joshuajessy47@gmail.com', 'vlgUm9-dkCiFX8swDoQ4uNdO1kiNtZhBs1CAIkbJl6gX3946BJ8uEQ')
+
+
+    #API Query
+    api_url = 'http://webservices.ns.nl/ns-api-avt?station='+ Station
+    response = requests.get(api_url, auth=auth_details)
+    vertrekXML = xmltodict.parse(response.text)
+
+    #Result
+    print('Dit zijn de vertrekkende treinen:')
+    for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
+        gegevens1 = ''
+        eindbestemming = vertrek['EindBestemming']
+        vertrektijd = vertrek['VertrekTijd'] # 2016-09-27T18:36:00+0200
+        vertrektijd = vertrektijd[11:16] # 18:36
+        gegevens = str('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming + '\n')
+        gegevens1 += (gegevens)
+    return gegevens1
 
 #Reis Info Menu
 def reisInfoMenu():
+    Station = 'Utrecht'
+    global footerInfoMenuImage
+    global infoMenu
     app.withdraw()
-    infoMenu = Tk()
-    infoMenu.iconbitmap('sources/ns.ico')
-    infoMenu.configure(background='#ffcf1a')
+    infoMenu = Toplevel()
     infoMenu.title("Reisinformatie | NS Kaartenautomaat")
-    infoMenu.geometry('{}x{}'.format(790,600))
-    infoMenu.resizable(width=False, height=False)
+    windowconfig(infoMenu)
 
     #infoMenu Label
     label = Label(master=infoMenu, text='Reisinformatie NS BETA By Joshua & Maarten', background='red')
@@ -36,11 +65,21 @@ def reisInfoMenu():
     entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', width=20,)
     entry1.place(x=120, y=430)
 
-    #Footer Image
+
+     #Footer Image
     footerInfoMenuImagePath = "sources/footerInfoMenu.jpg"
     footerInfoMenuImage = ImageTk.PhotoImage(PIL.Image.open(footerInfoMenuImagePath))
     footerInfoMenuImagePanel = Label(infoMenu, image = footerInfoMenuImage, borderwidth= 0)
-    footerInfoMenuImagePanel.place(x=0, y=555)
+    footerInfoMenuImagePanel.place(x=0, y=553)
+
+    #stopbutton
+    stopbutton = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='red', text='stop', command=app.deiconify)
+    stopbutton.place(x=700, y=555)
+
+    gegevens = reisInfo(Station)
+    text = Text(infoMenu)
+    text.insert(INSERT, gegevens)
+    text.pack()
 
 #Functions
 def NotInUse():
@@ -70,6 +109,7 @@ button1 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', 
 button1.place(x=275, y=425)
 button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie', command=reisInfoMenu)
 button2.place(x=575, y=425)
+
 
 #Show main App
 app.mainloop()
