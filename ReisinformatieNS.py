@@ -44,7 +44,7 @@ def reisInfo(Station):
         spoor1 = spoor.replace("OrderedDict([('@wijziging', 'false'), ('#text', '", "")
         spoor2 = spoor1.replace("')])", "")
         spoor3 = spoor2.replace("OrderedDict([('@wijziging', 'true'), ('#text', '", "")
-        gegevens += str('Om '+vertrektijd+' vertrekt er een ' + trein + ' naar '+ eindbestemming + ' van spoor ' + spoor3 + '\n')
+        gegevens += str('Om '+vertrektijd+' vertrekt er een ' + trein + ' richting '+ eindbestemming + ' van spoor ' + spoor3 + '\n')
     return gegevens
 
 #Reis Info Menu
