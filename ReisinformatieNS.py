@@ -35,7 +35,6 @@ def reisInfo(Station):
     gegevens = ''
 
     #Result
-    print('Dit zijn de vertrekkende treinen:')
     for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
         eindbestemming = vertrek['EindBestemming']
         vertrektijd = vertrek['VertrekTijd'] # 2016-09-27T18:36:00+0200
@@ -78,11 +77,16 @@ def reisInfoMenu():
     stopbutton = Button(master=infoMenu, font=('Frutiger', 10, 'bold'), foreground='white', background='red', text='Stoppen \n en naar beginscherm', command=closeInfoMenu)
     stopbutton.place(x=640, y=555)
 
+    #Scrollbar
+    scrollbar = Scrollbar(infoMenu)
+    scrollbar.place(x=160, y=30)
+
     #Reisgegevens Output GUI
     gegevens = reisInfo(Station)
     text = Text(infoMenu)
     text.insert(INSERT, gegevens)
     text.pack()
+    scrollbar.config (command = 'yscrollcommand')
 
 #Not in use warning
 def NotInUse():
