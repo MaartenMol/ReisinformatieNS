@@ -32,17 +32,17 @@ def reisInfo(Station):
     api_url = 'http://webservices.ns.nl/ns-api-avt?station='+ Station
     response = requests.get(api_url, auth=auth_details)
     vertrekXML = xmltodict.parse(response.text)
+    gegevens = ''
+
 
     #Result
     print('Dit zijn de vertrekkende treinen:')
     for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
-        gegevens1 = ''
         eindbestemming = vertrek['EindBestemming']
         vertrektijd = vertrek['VertrekTijd'] # 2016-09-27T18:36:00+0200
         vertrektijd = vertrektijd[11:16] # 18:36
-        gegevens = str('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming + '\n')
-        gegevens1 += (gegevens)
-    return gegevens1
+        gegevens += str('Om '+vertrektijd+' vertrekt een trein naar '+ eindbestemming + '\n')
+    return gegevens
 
 #Reis Info Menu
 def reisInfoMenu():
