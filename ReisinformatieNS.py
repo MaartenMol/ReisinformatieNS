@@ -22,12 +22,11 @@ app = Tk()
 app.title("NS Kaartenautomaat")
 windowconfig(app)
 
-#Reis Info
+#Reis Info API
 def reisInfo(Station):
 
     #API Authentication
     auth_details = ('joshuajessy47@gmail.com', 'vlgUm9-dkCiFX8swDoQ4uNdO1kiNtZhBs1CAIkbJl6gX3946BJ8uEQ')
-
 
     #API Query
     api_url = 'http://webservices.ns.nl/ns-api-avt?station='+ Station
@@ -65,17 +64,17 @@ def reisInfoMenu():
     entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', width=20,)
     entry1.place(x=120, y=430)
 
-
-     #Footer Image
+    #Footer Image
     footerInfoMenuImagePath = "sources/footerInfoMenu.jpg"
     footerInfoMenuImage = ImageTk.PhotoImage(PIL.Image.open(footerInfoMenuImagePath))
     footerInfoMenuImagePanel = Label(infoMenu, image = footerInfoMenuImage, borderwidth= 0)
     footerInfoMenuImagePanel.place(x=0, y=553)
 
-    #stopbutton
-    stopbutton = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='red', text='stop', command=app.deiconify)
-    stopbutton.place(x=700, y=555)
+    #Stopbutton
+    stopbutton = Button(master=infoMenu, font=('Frutiger', 10, 'bold'), foreground='white', background='red', text='Stoppen \n en naar beginscherm', command=app.deiconify)
+    stopbutton.place(x=640, y=555)
 
+    #Reisgegevens Output GUI
     gegevens = reisInfo(Station)
     text = Text(infoMenu)
     text.insert(INSERT, gegevens)
@@ -109,7 +108,6 @@ button1 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', 
 button1.place(x=275, y=425)
 button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie', command=reisInfoMenu)
 button2.place(x=575, y=425)
-
 
 #Show main App
 app.mainloop()
