@@ -1,6 +1,6 @@
 #ReisinformatieNS main application
 #Gemaakt door Bastiaan Ebbenhorst, Joshua Offermans, Maarten Mol, Thomas Mocellin
-#Version 0.1
+#Version 0.2
 
 #Import
 import requests
@@ -34,7 +34,6 @@ def reisInfo(Station):
     vertrekXML = xmltodict.parse(response.text)
     gegevens = ''
 
-
     #Result
     print('Dit zijn de vertrekkende treinen:')
     for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
@@ -54,6 +53,11 @@ def reisInfoMenu():
     infoMenu.title("Reisinformatie | NS Kaartenautomaat")
     windowconfig(infoMenu)
 
+    #Close InfoMenu
+    def closeInfoMenu():
+        app.deiconify()
+        infoMenu.destroy()
+
     #infoMenu Label
     label = Label(master=infoMenu, text='Reisinformatie NS BETA By Joshua & Maarten', background='red')
     label.pack()
@@ -71,7 +75,7 @@ def reisInfoMenu():
     footerInfoMenuImagePanel.place(x=0, y=553)
 
     #Stopbutton
-    stopbutton = Button(master=infoMenu, font=('Frutiger', 10, 'bold'), foreground='white', background='red', text='Stoppen \n en naar beginscherm', command=app.deiconify)
+    stopbutton = Button(master=infoMenu, font=('Frutiger', 10, 'bold'), foreground='white', background='red', text='Stoppen \n en naar beginscherm', command=closeInfoMenu)
     stopbutton.place(x=640, y=555)
 
     #Reisgegevens Output GUI
@@ -80,12 +84,12 @@ def reisInfoMenu():
     text.insert(INSERT, gegevens)
     text.pack()
 
-#Functions
+#Not in use warning
 def NotInUse():
     bericht = 'Deze functie is niet beschikbaar in onze App!'
     showinfo(title='Melding Reisinformatie NS', message=bericht)
 
-#App Label
+#Beta warning
 label = Label(master=app, text='Reisinformatie NS BETA By Joshua & Maarten', background='red')
 label.pack()
 
@@ -109,5 +113,5 @@ button1.place(x=275, y=425)
 button2 = Button(master=app, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie', command=reisInfoMenu)
 button2.place(x=575, y=425)
 
-#Show main App
+#Start main App
 app.mainloop()
