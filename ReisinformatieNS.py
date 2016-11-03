@@ -107,12 +107,8 @@ def reisInfoMenu():
 
 #Not in use warning
 def NotInUse():
-    bericht = 'Deze functie is niet beschikbaar in onze App!'
-    showinfo(title='Melding Reisinformatie NS', message=bericht)
-
-#Beta warning
-label = Label(master=app, text='Reisinformatie NS BETA By Joshua & Maarten', background='red')
-label.pack()
+    bericht = 'Deze functie is niet beschikbaar in onze applicatie! Reisinformatie functioneert naar behoren volgens de opdracht.'
+    showinfo(title='Waarschuwing | NS Kaartenautomaat', message=bericht)
 
 #Main Image
 mainImagePath = "sources/main.jpg"
