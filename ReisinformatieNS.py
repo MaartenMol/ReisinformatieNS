@@ -44,7 +44,14 @@ def reisInfo(Station):
         spoor1 = spoor.replace("OrderedDict([('@wijziging', 'false'), ('#text', '", "")
         spoor2 = spoor1.replace("')])", "")
         spoor3 = spoor2.replace("OrderedDict([('@wijziging', 'true'), ('#text', '", "")
-        gegevens += str('Om '+vertrektijd+' vertrekt er een ' + trein + ' richting '+ eindbestemming + ' van spoor ' + spoor3 + '\n')
+        try:
+            vertraging = ' met ' + vertrek['VertrekVertragingTekst'] + ' vertraging '
+        except KeyError:
+            vertraging = ""
+
+        vertraging1 = vertraging.replace("+", "")
+
+        gegevens += str('Om '+vertrektijd+' vertrekt er een ' + trein + ' richting '+ eindbestemming + ' van spoor ' + spoor3 + vertraging1 + '\n')
     return gegevens
 
 #Reis Info Menu
@@ -70,10 +77,23 @@ def reisInfoMenu():
     label = Label(master=infoMenu, height=10, text='', background='#ffcf1a')
     label.pack(side=BOTTOM)
 
-    #getdata
+
+
     def getdata():
-        station = entry1.get()
-        print(station)
+        text.delete(1.0, END)
+        Station = entry1.get()
+        try:
+            data = reisInfo(Station)
+        except:
+            text.insert(INSERT, 'Station is niet geldig')
+        else:
+            text.insert(INSERT, data)
+
+
+
+
+
+
     #infoMenu Buttons and Input
     stationEntry = StringVar()
     button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie ophalen', command=getdata)
@@ -97,13 +117,20 @@ def reisInfoMenu():
     scrollbar = Scrollbar(infoMenu)
     scrollbar.pack(side="right", fill=Y, expand=False)
 
+
     #Reisgegevens Output GUI
-    gegevens = reisInfo(Station)
+    data = reisInfo(Station)
     text = Text(infoMenu, font=('Frutiger', 12, 'bold'), foreground='white', background='#01236a')
-    text.insert(INSERT, gegevens)
+    text.insert(INSERT, data)
     text.pack()
     scrollbar.config (command = text.yview)
     text.config(yscrollcommand=scrollbar.set)
+
+
+
+
+
+
 
 #Not in use warning
 def NotInUse():
