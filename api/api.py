@@ -25,10 +25,10 @@ for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
     spoor2 = spoor1.replace("')])", "")
     spoor3 = spoor2.replace("OrderedDict([('@wijziging', 'true'), ('#text', '", "")
     try:
-        vertraging = vertrek['VertrekVertragingTekst']
+        vertraging = ' met ' + vertrek['VertrekVertragingTekst'] + ' vertraging '
     except KeyError:
-        vertraging = '+0 min'
+        vertraging = ""
 
     vertraging1 = vertraging.replace("+", "")
 
-    print('Om '+vertrektijd+' vertrekt een ' + trein + ' naar '+ eindbestemming + ' op spoor ' + spoor3 + ' met ' + vertraging1 + ' vertraging ')
+    print('Om '+vertrektijd+' vertrekt een ' + trein + ' naar '+ eindbestemming + ' op spoor ' + spoor3 + vertraging1)
