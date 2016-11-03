@@ -1,6 +1,5 @@
-#ReisinformatieNS main application
-#Gemaakt door Bastiaan Ebbenhorst, Joshua Offermans, Maarten Mol, Thomas Mocellin
-#Version 0.2
+#Reisinformatie NS application voor PROG Project
+#Gemaakt door Bastiaan Ebbenhorst, Joshua Offermans, Maarten Mol, Thomas Mocellin uit TICT-ICT-V1D
 
 #Import
 import requests
@@ -10,7 +9,7 @@ import PIL.Image
 from tkinter import *
 from tkinter.messagebox import showinfo
 
-#Main App Settings
+#Global Window Settings
 def windowconfig(window):
     window.iconbitmap('sources/ns.ico')
     window.configure(background='#ffcf1a')
@@ -49,9 +48,9 @@ def reisInfo(Station):
         except KeyError:
             vertraging = ""
 
-        vertraging1 = vertraging.replace("+", "")
+        vertragingInfo = vertraging.replace("+", "")
 
-        gegevens += str('Om '+vertrektijd+' vertrekt er een ' + trein + ' richting '+ eindbestemming + ' van spoor ' + spoor3 + vertraging1 + '\n')
+        gegevens += str('Om '+vertrektijd+' vertrekt er een ' + trein + ' richting '+ eindbestemming + ' van spoor ' + spoor3 + vertragingInfo + '\n')
     return gegevens
 
 #Reis Info Menu
@@ -77,9 +76,8 @@ def reisInfoMenu():
     label = Label(master=infoMenu, height=10, text='', background='#ffcf1a')
     label.pack(side=BOTTOM)
 
-
-
-    def getdata():
+    #Get User Input
+    def getData():
         text.delete(1.0, END)
         Station = entry1.get()
         try:
@@ -89,14 +87,9 @@ def reisInfoMenu():
         else:
             text.insert(INSERT, data)
 
-
-
-
-
-
     #infoMenu Buttons and Input
     stationEntry = StringVar()
-    button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie ophalen', command=getdata)
+    button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie ophalen', command=getData)
     button3.place(x=495, y=465)
     entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', width=20, textvariable=stationEntry , insertbackground='white')
     entry1.place(x=200, y=472)
@@ -117,20 +110,13 @@ def reisInfoMenu():
     scrollbar = Scrollbar(infoMenu)
     scrollbar.pack(side="right", fill=Y, expand=False)
 
-
     #Reisgegevens Output GUI
     data = reisInfo(Station)
-    text = Text(infoMenu, font=('Frutiger', 12, 'bold'), foreground='white', background='#01236a')
+    text = Text(infoMenu, font=('Frutiger', 12), foreground='white', background='#01236a')
     text.insert(INSERT, data)
     text.pack()
     scrollbar.config (command = text.yview)
     text.config(yscrollcommand=scrollbar.set)
-
-
-
-
-
-
 
 #Not in use warning
 def NotInUse():

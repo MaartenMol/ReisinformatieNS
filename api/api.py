@@ -29,6 +29,6 @@ for vertrek in vertrekXML['ActueleVertrekTijden']['VertrekkendeTrein']:
     except KeyError:
         vertraging = ""
 
-    vertraging1 = vertraging.replace("+", "")
+    vertragingInfo = vertraging.replace("+", "")
 
-    print('Om '+vertrektijd+' vertrekt een ' + trein + ' naar '+ eindbestemming + ' op spoor ' + spoor3 + vertraging1)
+    print('Om '+vertrektijd+' vertrekt een ' + trein + ' naar '+ eindbestemming + ' op spoor ' + spoor3 + vertragingInfo)
