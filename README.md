@@ -15,3 +15,5 @@ Python 3.5
 Pillow 3.4.2 for Python
 xmltodict 0.10.2 for Python
 requests 2.11.1 for Python
+
+Download laatste stabiele versie: https://github.com/MaartenMol96/ReisinformatieNS/archive/master.zip
