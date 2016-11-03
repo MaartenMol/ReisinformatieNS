@@ -1,7 +1,7 @@
 # ReisinformatieNS
 <b>Project voor TICT-V1PROG-15</b>
 
-<a href="https://github.com/MaartenMol96/ReisinformatieNS/wiki">Voorbeeld afbeeldingen applicatie:</a>
+<a href="https://github.com/MaartenMol96/ReisinformatieNS/wiki">Voorbeeld afbeeldingen applicatie</a>
 
 <b>Gebruik:</b>
 Open ReisinformatieNS.py gebruik de Reisinformatie knop, vul in dit scherm het station in waar je vanaf vertrekt en druk op ophalen.
