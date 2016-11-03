@@ -70,10 +70,15 @@ def reisInfoMenu():
     label = Label(master=infoMenu, height=10, text='', background='#ffcf1a')
     label.pack(side=BOTTOM)
 
+    #getdata
+    def getdata():
+        station = entry1.get()
+        print(station)
     #infoMenu Buttons and Input
-    button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie ophalen', command=NotInUse)
+    stationEntry = StringVar()
+    button3 = Button(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', text='Reisinformatie ophalen', command=getdata)
     button3.place(x=495, y=465)
-    entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', width=20,)
+    entry1 = Entry(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', background='#01236a', width=20, textvariable=stationEntry , insertbackground='white')
     entry1.place(x=200, y=472)
     label = Label(master=infoMenu, font=('Frutiger', 16, 'bold'), foreground='white', text='Vanaf station:', background='#01236a')
     label.place(x=25, y=470)
@@ -98,6 +103,7 @@ def reisInfoMenu():
     text.insert(INSERT, gegevens)
     text.pack()
     scrollbar.config (command = text.yview)
+    text.config(yscrollcommand=scrollbar.set)
 
 #Not in use warning
 def NotInUse():
